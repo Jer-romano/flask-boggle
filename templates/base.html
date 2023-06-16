@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/styles.css">
+    <title>Boggle Game</title>
+</head>
+<body>
+    <h1>Boggle</h1>
+    <table id="boggle-table">
+        <tbody>
+                {%for i in range(5)%}
+                <tr>
+                    {%for j in range(5)%}
+                    <td>{{board[i][j]}}</td>
+                    {%endfor %}
+                </tr>
+                {%endfor%} 
+        </tbody>
+    </table>
+    
+        <form action="" id="word-form" method="POST">
+            <label for="guess">Add a word:</label>
+            <input type="text" id="guess">
+            <button>Check</button>
+        </form>
+        <table id="score-box">
+            <tbody>
+                <tr>
+                    <td>Score: </td>
+                    <td id="score-keeper"> 0</td>
+                </tr>
+            </tbody>
+        </table>
+    <p id="response">Response</p>
+    <div>
+        <h3>Found Words</h3>
+        <ul id="found-words">
+
+        </ul>
+    </div>
+
+
+
+    <script src="static/jquery-3.1.1.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.js"></script>
+    <script src="static/script.js"></script>
+</body>
+</html>
