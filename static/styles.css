@@ -24,6 +24,6 @@ form {
     margin: 15px;
 }
 
-#score-box {
+.score-box {
     display: inline-block;
 }
