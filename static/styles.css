@@ -1,6 +1,7 @@
 body {
  text-align: center;
- background-color: aquamarine;
+ background: rgb(63,94,251);
+ background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
 }
 
 #boggle-table {
@@ -38,9 +39,24 @@ form {
 
 .score-box {
     display: inline-block;
+    background-color: white;
+    padding: 0.3em;
+    border-radius: 8px;
+    border: 1px solid black;
 }
 
-button, label, input {
+#response-area {
+    display: inline-block;
+}
+
+button, input {
+   border: 2px solid black;
+   border-radius: 8px;
    font-size: 1.3em;
    padding: 0.3em;
+}
+
+label {
+    font-size: 1.3em;
+    padding: 0.3em;
 }
