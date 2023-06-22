@@ -1,0 +1,42 @@
+{%extends 'base.html'%}
+
+{%block board%}
+<table id="boggle-table">
+    <tbody>
+            {%for i in range(5)%}
+            <tr>
+                {%for j in range(5)%}
+                <td>{{board[i][j]}}</td>
+                {%endfor %}
+            </tr>
+            {%endfor%} 
+    </tbody>
+</table>
+{%endblock%}
+{%block form%}
+<form action="" id="word-form" method="POST">
+    <label for="guess"><b>Add a word:</b></label>
+    <input type="text" id="guess">
+    <button>Check</button>
+</form>
+{%endblock%}
+{%block gameinfo%}
+<!-- <table>
+    <tbody>
+        <tr>
+            <td>Score: </td>
+            <td id="score-keeper"> 0</td>
+        </tr>
+    </tbody>
+</table> -->
+<div>
+    <h2 class="score-box">Score: </h2>
+    <h2 class="score-box" id="score-value">0 </h2>
+</div>
+<h3 id="response">Response</h3>
+<div>
+<h3>Found Words</h3>
+<ul id="found-words">
+</ul>
+</div>
+{%endblock%}

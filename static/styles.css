@@ -1,5 +1,6 @@
 body {
  text-align: center;
+ background-color: aquamarine;
 }
 
 #boggle-table {
@@ -7,6 +8,15 @@ body {
     margin-right: auto;
     width: 30%;
     border: 2px solid black;
+}
+
+h1 {
+    display: inline-block;
+}
+#time-box {
+    margin-left: 8rem;
+    border: 2px solid black;
+    padding: 0.9rem;
 }
 
 ul {
@@ -17,7 +27,9 @@ ul {
 
 td {
     border: 2px solid black;
-    font-size: 1.5rem;
+    font-size: 2.1rem;
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
 }
 
 form {
@@ -26,4 +38,9 @@ form {
 
 .score-box {
     display: inline-block;
+}
+
+button, label, input {
+   font-size: 1.3em;
+   padding: 0.3em;
 }

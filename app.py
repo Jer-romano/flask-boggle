@@ -10,10 +10,14 @@ debug = DebugToolbarExtension(app)
 boggle_game = Boggle()
 
 @app.route("/")
+def show_start():
+    return render_template("base.html")
+
+@app.route("/start")
 def show_board():
     board = boggle_game.make_board()
     session["board"] = board
-    return render_template("base.html", board=board)
+    return render_template("game.html", board=board)
 
 @app.route("/submit", methods=["POST"])
 def submit_word():

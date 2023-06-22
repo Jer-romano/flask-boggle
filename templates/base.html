@@ -7,46 +7,37 @@
     <title>Boggle Game</title>
 </head>
 <body>
-    <h1>Boggle</h1>
+    <div id="header">
+        <h1>Boggle</h1>
+        <span id="time-box">
+            <h1 id="minute-timer">0:</h1>
+            <h1 id="timer">59</h1>
+        </span>
+        
+    </div>
+    
+    {%block board%}
     <table id="boggle-table">
         <tbody>
                 {%for i in range(5)%}
                 <tr>
                     {%for j in range(5)%}
-                    <td>{{board[i][j]}}</td>
+                    <td>?</td>
                     {%endfor %}
                 </tr>
                 {%endfor%} 
         </tbody>
     </table>
-    
-        <form action="" id="word-form" method="POST">
-            <label for="guess">Add a word:</label>
-            <input type="text" id="guess">
-            <button>Check</button>
-        </form>
-        <table>
-            <tbody>
-                <tr>
-                    <td>Score: </td>
-                    <td id="score-keeper"> 0</td>
-                </tr>
-            </tbody>
-        </table>
-        <div>
-            <p class="score-box">Score: </p>
-            <p class="score-box">Score: </p>
-        </div>
-    <p id="response">Response</p>
-    <div>
-        <h3>Found Words</h3>
-        <ul id="found-words">
+    {% endblock %}
+   
+    {%block form%}
+    <form action="/start" id="start-form">
+        <button type="submit" id="start-btn">Start</button>
+    </form>
+    {%endblock%}
+    {%block gameinfo%}
 
-        </ul>
-    </div>
-
-
-
+    {%endblock%}
     <script src="static/jquery-3.1.1.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.js"></script>
     <script src="static/script.js"></script>

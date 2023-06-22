@@ -3,6 +3,7 @@
 from random import choice
 import string
 
+better_alph = "AAAAEEEEIIIOOUUYRRTTSSNN" + string.ascii_uppercase
 
 class Boggle():
 
@@ -24,7 +25,7 @@ class Boggle():
         board = []
 
         for y in range(5):
-            row = [choice(string.ascii_uppercase) for i in range(5)]
+            row = [choice(better_alph) for i in range(5)]
             board.append(row)
 
         return board
