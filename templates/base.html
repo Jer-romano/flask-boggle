@@ -8,12 +8,16 @@
 </head>
 <body>
     <div id="header">
-        <h1>Boggle</h1>
+        <h1 id="boggle-title">Boggle</h1>
         <span id="time-box">
             <h1 id="minute-timer">0:</h1>
-            <h1 id="timer">59</h1>
-        </span>
-        
+            <h1 id="timer">60</h1>
+        </span>   
+        <h1 class="hidden" id="times-up-msg">Time's Up!</h1>
+        {%block highscore%}
+        <h2 class="score-box">High Score: </h2>
+        <h2 class="score-box" id="high-score">{{ session['high-score'] }}</h2>
+        {%endblock%}
     </div>
     
     {%block board%}

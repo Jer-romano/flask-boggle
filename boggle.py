@@ -3,13 +3,14 @@
 from random import choice
 import string
 
-better_alph = "AAAAEEEEIIIOOUUYRRTTSSNN" + string.ascii_uppercase
+better_alphabet = "AAAAEEEEIIIOOUUYRRTTSSNN" + string.ascii_uppercase
 
 class Boggle():
 
     def __init__(self):
 
         self.words = self.read_dict("words.txt")
+        self.found_words = []
 
     def read_dict(self, dict_path):
         """Read and return all words in dictionary."""
@@ -25,7 +26,7 @@ class Boggle():
         board = []
 
         for y in range(5):
-            row = [choice(better_alph) for i in range(5)]
+            row = [choice(better_alphabet) for i in range(5)]
             board.append(row)
 
         return board

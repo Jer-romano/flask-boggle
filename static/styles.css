@@ -2,6 +2,7 @@ body {
  text-align: center;
  background: rgb(63,94,251);
  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+ font-family: 'American Typewriter', serif;
 }
 
 #boggle-table {
@@ -11,12 +12,30 @@ body {
     border: 2px solid black;
 }
 
+#boggle-title {
+    font-size: 4rem;
+    margin: 0.5rem;
+    text-decoration: underline;
+}
+
 h1 {
     display: inline-block;
 }
+#input-container, #response-area {
+    display: flex;
+    justify-content: center;
+}
+
+#response {
+    margin-left: 2em;
+}
+
 #time-box {
+    background-color: whitesmoke;
     margin-left: 8rem;
+    margin-bottom: 0.5rem;
     border: 2px solid black;
+    border-radius: 8px;
     padding: 0.9rem;
 }
 
@@ -28,12 +47,13 @@ ul {
 
 td {
     border: 2px solid black;
-    font-size: 2.1rem;
+    font-size: 2.5rem;
+    font-family: 'Times New Roman', Times, serif;
     padding-left: 0.3rem;
     padding-right: 0.3rem;
 }
 
-form {
+#word-form {
     margin: 15px;
 }
 
@@ -45,18 +65,44 @@ form {
     border: 1px solid black;
 }
 
-#response-area {
-    display: inline-block;
-}
 
-button, input {
+#times-up-msg {
+    margin-left: 6rem;
+    margin-right: 3rem;
+}
+#start-btn {
+    padding: 1rem 1.5rem 1rem 1.5rem;
+    margin-top: 10px;
+}
+input {
    border: 2px solid black;
    border-radius: 8px;
    font-size: 1.3em;
    padding: 0.3em;
 }
 
-label {
+button {
+    background-color: #dae6d5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border: 2px solid #333;
+    border-radius: 6px;
     font-size: 1.3em;
     padding: 0.3em;
+  }
+
+button:hover {
+    background-color: #ffcc00;
+}
+
+button:active {
+    transform: translateY(2px);
+}
+
+label {
+    font-size: 1.6em;
+    padding: 0.3em;
+}
+
+.hidden {
+    visibility: hidden;
 }

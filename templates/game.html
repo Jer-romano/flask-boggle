@@ -1,12 +1,17 @@
 {%extends 'base.html'%}
 
+{%block highscore%}
+<h2 class="score-box">High Score: </h2>
+<h2 class="score-box" id="high-score">{{ session['high-score'] }}</h2>
+{%endblock%}
+
 {%block board%}
 <table id="boggle-table">
     <tbody>
             {%for i in range(5)%}
             <tr>
                 {%for j in range(5)%}
-                <td>{{board[i][j]}}</td>
+                <td>{{ session['board'][i][j] }}</td>
                 {%endfor %}
             </tr>
             {%endfor%} 
@@ -14,11 +19,16 @@
 </table>
 {%endblock%}
 {%block form%}
-<form action="" id="word-form" method="POST">
-    <label for="guess"><b>Add a word:</b></label>
-    <input type="text" id="guess">
-    <button>Check</button>
-</form>
+<div id="input-container">
+    <form action="" id="word-form" method="POST">
+        <label for="guess"><b>Add a word:</b></label>
+        <input type="text" id="guess">
+        <button id="guess-btn">Check</button>
+    </form>
+        <button id="restart-btn" class="hidden">Restart</button>
+   
+</div>
+
 {%endblock%}
 {%block gameinfo%}
 <!-- <table>
@@ -32,9 +42,9 @@
 <div id="response-area">
     <h2 class="score-box">Score: </h2>
     <h2 class="score-box" id="score-value">0 </h2>
-    <h3 id="response">Response</h3>
+    <h2 id="response">Response</h2>
 </div>
-
+<h1>{{ session['fav-numb'] }}</h1>
 <div>
 <h3>Found Words</h3>
 <ul id="found-words">
