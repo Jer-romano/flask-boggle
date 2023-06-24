@@ -8,8 +8,9 @@ body {
 #boggle-table {
     margin-left: auto;
     margin-right: auto;
-    width: 30%;
-    border: 2px solid black;
+    width: 35%;
+    border: 2px solid goldenrod;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 #boggle-title {
@@ -36,6 +37,7 @@ h1 {
     margin-bottom: 0.5rem;
     border: 2px solid black;
     border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     padding: 0.9rem;
 }
 
@@ -46,8 +48,8 @@ ul {
 }
 
 td {
-    border: 2px solid black;
-    font-size: 2.5rem;
+    border: 2px solid goldenrod;
+    font-size: 3rem;
     font-family: 'Times New Roman', Times, serif;
     padding-left: 0.3rem;
     padding-right: 0.3rem;
@@ -62,6 +64,7 @@ td {
     background-color: white;
     padding: 0.3em;
     border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     border: 1px solid black;
 }
 
@@ -77,11 +80,12 @@ td {
 input {
    border: 2px solid black;
    border-radius: 8px;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
    font-size: 1.3em;
    padding: 0.3em;
 }
 
-button {
+button, #restart-btn {
     background-color: #dae6d5;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     border: 2px solid #333;
@@ -92,6 +96,7 @@ button {
 
 button:hover {
     background-color: #ffcc00;
+    cursor: pointer;
 }
 
 button:active {

@@ -19,6 +19,9 @@ class Boggle():
         words = [w.strip() for w in dict_file]
         dict_file.close()
         return words
+    
+    def clearFoundWords(self):
+        self.found_words.clear()
 
     def make_board(self):
         """Make and return a random boggle board."""

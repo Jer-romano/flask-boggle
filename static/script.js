@@ -2,9 +2,10 @@ $(document).ready(function() {
     $("#word-form").on("submit", submitGuess);
     let startForm = $("#start-form");
     let startBtn = $("#start-btn");
+    let restartBtn = $("#restart-btn");
 
     let score = 0;
-    const timerVal = 15;
+    const timerVal = 20;
     
     class Timer {
         constructor(startVal, domEl) {
@@ -13,6 +14,7 @@ $(document).ready(function() {
             this.intervalId = 0;
             this.domElement = domEl;
             console.log(this.startVal, this.domElement)
+            this.domElement.text(this.startVal);
         }
         endGame() {
             $("#guess-btn").attr("disabled", "disabled");
@@ -35,7 +37,11 @@ $(document).ready(function() {
         }
     
         updateDom() {
-            this.domElement.text(this.currentVal);
+            if(this.currentVal < 10) {
+                this.domElement.text("0" + this.currentVal);
+            } else {
+                this.domElement.text(this.currentVal);
+            }
         }
      
     
@@ -56,6 +62,7 @@ $(document).ready(function() {
     
     async function submitGuess(evt) {
         evt.preventDefault();
+        $("#response").text("");
         let guess = $("#guess").val();
         guess = guess.toLowerCase();
         let response;
@@ -78,18 +85,20 @@ $(document).ready(function() {
 
     async function submitScore(localScore) {
         try {
-            response = await axios.request({
+            const response = await axios.request({
                 url: "http://127.0.0.1:5000/endgame",
                 method: "POST",
                 data: {score: localScore}
-            })
+            });
+            let { high_score } = response.data;
+            $("#high-score").text(high_score);
         } catch(err) {
             console.error("submitScore function failed: ", err);
         }
+       restartBtn.removeClass();
+      
     }
 
-  
-    
     function updateGameInfo(result, guess, is_unique) {
         if (result == "ok" && is_unique) {
             $("#response").text("Nice find!");
@@ -98,14 +107,41 @@ $(document).ready(function() {
             $("#score-value").text(score);
         }
         else if (result == "not-on-board") {
-            $("#response").text(`${guess} is not present.`);
+            $("#response").text(`"${guess}" is not present.`);
         }
         else if (result == "not-word") {
-            $("#response").text(`${guess} is not a valid English word.`);
+            $("#response").text(`"${guess}" is not a valid English word.`);
         }
         else {
-            $("#response").text(`${guess} has already been found.`);
+            $("#response").text(`"${guess}" has already been found.`);
         }
     }
+
+    async function restartGame(evt) {
+        $("#response").text("");
+        $("#score-value").text("0");
+        $("#times-up-msg").addClass("hidden");
+
+        // axios.get("/restart")
+        // .then(function(response) {
+        //     console.log("Restart Response:", response);
+        // })
+        // .catch(function(error) {
+        //     console.error("restartGame function failed: ", err);
+        // })
+        // .finally(function() {
+        //     $("#restart-btn").addClass("hidden");
+        // })
+        try {
+            const response = await axios.request({
+                url: "http://127.0.0.1:5000/restart",
+                method: "POST",
+            });
+            console.log("Restart Response:", response);
+        } catch(err) {
+            console.error("restartGame function failed: ", err);
+        }
+    }
+    restartBtn.click(restartGame);
 });
 
