@@ -5,7 +5,7 @@ $(document).ready(function() {
     let restartBtn = $("#restart-btn");
 
     let score = 0;
-    const timerVal = 20;
+    const timerVal = 60;
     
     class Timer {
         constructor(startVal, domEl) {
@@ -102,7 +102,7 @@ $(document).ready(function() {
     function updateGameInfo(result, guess, is_unique) {
         if (result == "ok" && is_unique) {
             $("#response").text("Nice find!");
-            $("#found-words").append($(`<li> ${guess} </li>`));
+            $("#found-words-list").append($(`<span>${guess},</span>`));
             score += guess.length;
             $("#score-value").text(score);
         }
@@ -132,15 +132,15 @@ $(document).ready(function() {
         // .finally(function() {
         //     $("#restart-btn").addClass("hidden");
         // })
-        try {
-            const response = await axios.request({
-                url: "http://127.0.0.1:5000/restart",
-                method: "POST",
-            });
-            console.log("Restart Response:", response);
-        } catch(err) {
-            console.error("restartGame function failed: ", err);
-        }
+        // try {
+        //     const response = await axios.request({
+        //         url: "http://127.0.0.1:5000/restart",
+        //         method: "POST",
+        //     });
+        //     console.log("Restart Response:", response);
+        // } catch(err) {
+        //     console.error("restartGame function failed: ", err);
+        // }
     }
     restartBtn.click(restartGame);
 });

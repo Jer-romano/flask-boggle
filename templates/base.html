@@ -14,24 +14,30 @@
             <h1 id="timer">60</h1>
         </span>   
         <h1 class="hidden" id="times-up-msg">Time's Up!</h1>
-        {%block highscore%}
-        <h2 class="score-box">High Score: </h2>
-        <h2 class="score-box" id="high-score">{{ session['high-score'] }}</h2>
-        {%endblock%}
+        <span id="high-score-span">
+            <h2 class="score-box">High Score: </h2>
+            <h2 class="score-box" id="high-score">{{ session['high_score'] }}</h2>
+        </span>
     </div>
-    
+    {%for msg in get_flashed_messages()%}
+    <span class="flash-msg">{{ msg }}</span>
+    {%endfor%}
+    {%block flash%}
+    {%endblock%}
     {%block board%}
-    <table id="boggle-table">
-        <tbody>
-                {%for i in range(5)%}
-                <tr>
-                    {%for j in range(5)%}
-                    <td>?</td>
-                    {%endfor %}
-                </tr>
-                {%endfor%} 
-        </tbody>
-    </table>
+    <div id="table-div">
+        <table id="boggle-table">
+            <tbody>
+                    {%for i in range(5)%}
+                    <tr>
+                        {%for j in range(5)%}
+                        <td>?</td>
+                        {%endfor %}
+                    </tr>
+                    {%endfor%} 
+            </tbody>
+        </table>
+    </div>
     {% endblock %}
    
     {%block form%}
